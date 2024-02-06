@@ -1,0 +1,51 @@
+.product-box {
+  display: flex;
+  width: 1000px;
+  height: 800px;
+  border: 1px solid gray;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.left-section {
+  width: 50%;
+  padding: 10px;
+}
+
+.right-section {
+  width: 50%;
+  padding: 20px;
+}
+
+.company {
+  padding: 20px 7px 7px 7px;
+}
+
+.product {
+  padding: 7px;
+  font-size: 30px;
+}
+
+.price {
+  padding: 7px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.pay-post1 {
+  padding: 15px 7px 15px 7px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.pay-post2 {
+  padding: 7px;
+  color: blue;
+  font-weight: bold;
+  background-color: skyblue;
+  width: 120px;
+}
+
+.pay-post3 {
+  padding: 15px 7px 7px 7px;
+}

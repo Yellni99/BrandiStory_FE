@@ -1,7 +1,12 @@
 import React from "react";
+import ProductDetail from "./components/ProductDetail";
 
-function App() {
-  return <div className="App"></div>;
-}
+const App = () => {
+  return (
+    <div>
+      <ProductDetail />
+    </div>
+  );
+};
 
 export default App;
