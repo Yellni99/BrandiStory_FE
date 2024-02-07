@@ -1,0 +1,37 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 7rem;
+    background-color: #f8f9fa;
+    padding: 0 2rem;
+}
+
+.logo,
+.bar {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1,
+.bar div {
+    margin: 0;
+    padding: 0;
+}
+
+.logo .logoimage img,
+.bar .search a img,
+.bar .cart a img {
+    transition: transform 0.2s;
+}
+
+.bar {
+    display: flex;
+    gap: 1rem;
+}
+
+.logo .logoimage img:hover,
+.bar .search a img:hover,
+.bar .cart a img:hover {
+    transform: scale(1.1);
+}
