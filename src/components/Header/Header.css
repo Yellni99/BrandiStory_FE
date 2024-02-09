@@ -1,37 +1,46 @@
 .Header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 7rem;
-    background-color: #f8f9fa;
-    padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7rem;
+  background-color: #f8f9fa;
+  padding: 0 2rem;
 }
 
 .logo,
 .bar {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo h1,
 .bar div {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.logo .logoimage img,
+.logo .logoimage img {
+  transition: transform 0.2s;
+}
+
 .bar .search a img,
-.bar .cart a img {
-    transition: transform 0.2s;
+.bar .cart a img,
+.bar .fav a img,
+.bar .profile a img {
+  transition: transform 0.2s;
+  width: 30px;
+  height: 30px;
 }
 
 .bar {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .logo .logoimage img:hover,
 .bar .search a img:hover,
-.bar .cart a img:hover {
-    transform: scale(1.1);
+.bar .cart a img:hover,
+.bar .fav a img:hover,
+.bar .profile a img:hover {
+  transform: scale(1.1);
 }

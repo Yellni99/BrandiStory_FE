@@ -1,4 +1,13 @@
 export { default as cart } from "./cart.png";
 export { default as logo } from "./logo.png";
-export { default as image1 } from "./image1.png";
 export { default as searching } from "./searching.png";
+export { default as image1 } from "./image1.png";
+export { default as image2 } from "./image2.png";
+export { default as image3 } from "./image3.png";
+export { default as image4 } from "./image4.png";
+export { default as image5 } from "./image5.png";
+export { default as image6 } from "./image6.png";
+export { default as image7 } from "./image7.png";
+export { default as image8 } from "./image8.png";
+export { default as fav } from "./fav.png";
+export { default as profile } from "./profile.png";
