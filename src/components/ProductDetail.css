@@ -40,17 +40,19 @@
 }
 
 .pay-post1 {
-  padding: 15px 7px 15px 7px;
+  padding: 15px 7px 5px 7px;
   font-weight: bold;
   font-size: 15px;
 }
 
 .pay-post2 {
-  padding: 7px;
-  color: blue;
+  padding: 5px;
+  color: rgb(86, 156, 246);
   font-weight: bold;
-  background-color: skyblue;
-  width: 135px;
+  background-color: rgb(200, 236, 250);
+  width: 105px;
+  border-radius: 5px;
+  font-size: 13px;
 }
 
 .pay-post3 {
@@ -71,4 +73,29 @@
   margin-top: 10px;
   width: 300px;
   height: 40px;
+}
+
+.delivery-1 {
+  font-size: 15px;
+}
+
+.delivery-2 {
+  padding-left: 30px;
+  color: blue;
+  font-size: 15px;
+}
+
+.delivery-3 {
+  margin-left: 20px;
+  padding: 3px;
+  font-size: 15px;
+  border: none;
+  background-color: rgb(224, 220, 220);
+  color: rgb(122, 120, 120);
+
+  border-radius: 5px;
+}
+
+.option-box {
+  border: 1px solid red;
 }
