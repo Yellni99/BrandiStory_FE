@@ -78,7 +78,10 @@ const ProductDetail = () => {
           <select
             className="colorSelect"
             value={color}
-            onChange={handleColorChange}
+            onChange={(e) => {
+              setColor(e.target.value);
+              setSize("");
+            }}
           >
             <option value="">색상을 선택하세요.</option>
             <option value="화이트">화이트</option>
@@ -89,7 +92,10 @@ const ProductDetail = () => {
           <select
             className="sizeSelect"
             value={size}
-            onChange={handleSizeChange}
+            onChange={(e) => {
+              setSize(e.target.value);
+              setViewOptions(true);
+            }}
             disabled={!color}
           >
             <option value="">사이즈를 선택하세요.</option>
