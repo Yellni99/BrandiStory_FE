@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { cart, logo, searching, fav, profile } from "../../assets/images";
 
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    if (searchTerm.trim() === "") {
+      alert("검색어를 입력해주세요");
+    } else {
+      onSearch(searchTerm);
+    }
+  };
+
+  return (
+    <form className="search-bar" onSubmit={handleSearch}>
+      <input
+        className="search-input"
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleInputChange}
+      />
+      <button type="submit" className="search-button">
+        <img src={searching} alt="Search" />
+      </button>
+    </form>
+  );
+};
 function Header() {
   return (
     <div className="Header">
@@ -12,12 +43,12 @@ function Header() {
           </a>
         </h1>
       </div>
+
       <div className="bar">
         <div className="search">
-          <a href="#" className="search-link">
-            <img src={searching} alt="Search" />
-          </a>
+          <SearchBar />
         </div>
+
         <div className="cart">
           <a href="#" className="cart-link">
             <img src={cart} alt="Cart" />

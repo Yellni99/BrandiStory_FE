@@ -10,14 +10,14 @@ import {
   image8,
 } from "../../assets/images";
 import "../mainPage/Main.css";
+import { SliderData } from "./SliderData";
+import ImageSlider from "./ImageSlider";
 
 function Main() {
-  //   const product = {
-  //     proudct_name: proudctName,
-  //   };
   return (
     <>
       <div>
+        <ImageSlider slides={SliderData} />
         <div className="today">오늘은 이 상품 어때요?</div>
         <section id="list">
           <ul className="main_image1">

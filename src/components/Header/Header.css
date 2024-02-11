@@ -44,3 +44,52 @@
 .bar .profile a img:hover {
   transform: scale(1.1);
 }
+
+/* input {
+  width: 200px;
+  height: 10px;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.2s;
+} */
+
+input:hover,
+input:focus {
+  border-color: #545454; /* 포커스 또는 호버 시 테두리 색상 변경 */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #000;
+  padding: 0.5rem 0;
+}
+
+.search-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.search-button img {
+  width: 20px;
+  height: auto;
+  display: block;
+}
+
+.search-button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
