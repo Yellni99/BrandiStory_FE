@@ -5,23 +5,46 @@ import { Heart } from "react-bootstrap-icons";
 import "./ProductDetail.css";
 
 const ProductDetail = () => {
+  const [mainImage, setMainImage] = useState("");
+  const [detailedImage, setDetailedImage] = useState([]);
+  const [companyName, setCompanyName] = useState("");
+  const [productName, setProductName] = useState("");
+  const [price, setPrice] = useState(0);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(0);
   const [viewOptions, setViewOptions] = useState(false);
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
 
   // 이펙트를 사용하여 백엔드에서 금액 값 받아오기
   useEffect(() => {
-    // 가격 값 API 받아오기
-    setPrice();
-  }, [color, size, quantity]);
+    const fetchData = async () => {
+      try {
+        const response = await fetch("API주소");
+        if (!response.ok) {
+          throw new Error("데이터를 불러오는데 문제 발생");
+        }
+        const Data = await response.json();
+        setMainImage(Data.mainImage);
+        setDetailedImage(Data.detailedImage);
+        setCompanyName(Date.companyName);
+        setProductName(Date.productName);
+        setPrice(Date.price);
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류가 발생:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleRemoveButton = () => {
     setColor("");
     setSize("");
     setQuantity(1);
     setViewOptions(false);
+    setSelectedColor("");
+    setSelectedSize("");
   };
 
   const handleIncrement = () => {
@@ -36,27 +59,41 @@ const ProductDetail = () => {
   const handleColorChange = (e) => {
     setColor(e.target.value);
     setSize("");
+    setViewOptions(false);
+    setSelectedColor(e.target.value);
+    setSelectedSize("");
   };
 
   const handleSizeChange = (e) => {
     setSize(e.target.value);
     setViewOptions(true);
+    setSelectedSize(e.target.value);
+    setColor(" ");
+    setSize("");
   };
 
   return (
     <div className="product-box">
       <div className="left-section">
-        <div className="main-image"></div>
+        <div className="main-image">
+          <img src={mainImage} alt="Main" />
+        </div>
         <div className="detailed-image">
-          <div className="detailed-image1"></div>
-          <div className="detailed-image2"></div>
-          <div className="detailed-image3"></div>
+          <div className="detailed-image1">
+            <img src={detailedImage[0]} alt="Detail 1" />
+          </div>
+          <div className="detailed-image2">
+            <img src={detailedImage[1]} alt="Detail 2" />
+          </div>
+          <div className="detailed-image3">
+            <img src={detailedImage[2]} alt="Detail 3" />
+          </div>
         </div>
       </div>
       <div className="right-section">
-        <div className="company">업체명</div>
-        <div className="product">상품명</div>
-        <div className="price">가격</div>
+        <div className="company">{companyName}업체명</div>
+        <div className="product">{productName}상품명</div>
+        <div className="product-price">{price}원</div>
         <div className="detail">
           <div className="pay-post1">
             빠른페이》 <span style={{ color: "gray" }}>결제시</span>
@@ -78,10 +115,7 @@ const ProductDetail = () => {
           <select
             className="colorSelect"
             value={color}
-            onChange={(e) => {
-              setColor(e.target.value);
-              setSize("");
-            }}
+            onChange={handleColorChange}
           >
             <option value="">색상을 선택하세요.</option>
             <option value="화이트">화이트</option>
@@ -92,10 +126,7 @@ const ProductDetail = () => {
           <select
             className="sizeSelect"
             value={size}
-            onChange={(e) => {
-              setSize(e.target.value);
-              setViewOptions(true);
-            }}
+            onChange={handleSizeChange}
             disabled={!color}
           >
             <option value="">사이즈를 선택하세요.</option>
@@ -109,7 +140,7 @@ const ProductDetail = () => {
           <div className="option-box">
             <div className="options-1">
               <div>
-                {color} / {size}
+                {selectedColor} / {selectedSize}
                 <div className="standard-delivery">일반배송</div>
               </div>
               <div className="quantity-option">
@@ -119,7 +150,12 @@ const ProductDetail = () => {
                 >
                   -
                 </button>
-                <input className="quantity-Check" value={quantity} min={1} />
+                <input
+                  className="quantity-Check"
+                  value={quantity}
+                  min={1}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
                 <button
                   onClick={handleIncrement}
                   style={{ border: "1px solid gray", background: "white" }}
@@ -136,6 +172,7 @@ const ProductDetail = () => {
             </div>
           </div>
         )}
+
         <div className="total-price">
           <span>총 상품 금액</span>
           <span>
