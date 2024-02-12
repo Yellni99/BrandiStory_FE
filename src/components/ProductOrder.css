@@ -76,7 +76,7 @@
 }
 
 .Order_product__price {
-  padding-left: 270px;
+  padding-left: 500px;
   padding-top: 40px;
   font-size: 18px;
   font-weight: 600;
@@ -102,7 +102,10 @@
 .Orderer_info {
   display: flex;
   flex-direction: column; /* 세로 방향으로 아이템을 배치합니다. */
-  padding: 10px; /* 내부 여백 추가 */
+  padding-top: 80px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
   margin: 15px;
   font-size: 25px;
   font-weight: bolder;
@@ -180,4 +183,328 @@ label {
   outline: none; /* 포커스 시 외곽선 제거 */
   background-color: rgb(245, 245, 245); /* 배경 투명 */
   color: #333; /* 텍스트 색상 */
+}
+
+.memo_h1 {
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 아이템을 배치합니다. */
+  padding-top: 80px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin: 15px;
+  font-size: 25px;
+  font-weight: bolder;
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
+}
+
+.memo_name {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 15px;
+  border-bottom: thin solid rgb(225, 225, 225);
+}
+
+.memo_phone {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 15px;
+  border-bottom: thin solid rgb(225, 225, 225);
+}
+
+.memo_address {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 15px;
+  border-bottom: thin solid rgb(225, 225, 225);
+}
+
+.memo_select {
+  display: flex;
+  padding: 15px;
+  margin: 15px;
+  border-bottom: 1px solid black;
+}
+
+.slide-container {
+  overflow: hidden;
+  transition: height 0.3s ease;
+  height: auto; /* 슬라이드의 높이를 자동으로 설정합니다. */
+}
+
+.slide-out {
+  height: 0; /* 슬라이드를 숨기기 위해 높이를 0으로 설정합니다. */
+}
+
+.slide-in {
+  height: auto; /* 슬라이드가 다시 나타날 때 높이를 자동으로 설정합니다. */
+}
+
+.memo_button {
+  width: 300px;
+  height: 50px;
+  padding: 15px;
+  margin-top: -5px;
+  margin-left: 100px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  border: none; /* 테두리 없음 */
+  outline: none; /* 포커스 시 외곽선 제거 */
+  background-color: rgb(245, 245, 245); /* 배경 투명 */
+  color: #333; /* 텍스트 색상 */
+}
+
+.slide-container.hidden {
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.memo_message {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 100px;
+  width: 270px;
+  border: 1px solid rgb(248, 248, 248);
+  border-radius: 5px;
+  background-color: white; /* 배경 투명 */
+  color: #333; /* 텍스트 색상 */
+  font-size: 20px;
+  font-weight: thin;
+  line-height: 1.5;
+}
+
+.totalPrice_h1 {
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 아이템을 배치합니다. */
+  padding-top: 80px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin: 15px;
+  font-size: 25px;
+  font-weight: bolder;
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
+}
+
+.totalPrice_price {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 0 20px;
+  margin: 15px;
+}
+
+.totalPrice_delivery {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 0 20px;
+  margin: 15px;
+}
+
+.totalPrice_total {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 20px 20px;
+  margin: 15px;
+  font-size: 30px;
+  font-weight: bolder;
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
+}
+
+.totalPrice_total__price {
+  color: red;
+}
+
+.payment_h1 {
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 아이템을 배치합니다. */
+  padding-top: 80px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin: 15px;
+  font-size: 25px;
+  font-weight: bolder;
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
+}
+
+/* CSS 파일이나 <style> 태그 안에서 적용할 스타일 */
+.checkbox-custom {
+  /* 동그란 모양을 위한 스타일 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc; /* 체크 박스의 테두리 색상 */
+  outline: none; /* 클릭 시 포커스 표시 제거 */
+  cursor: pointer; /* 포인터 커서로 변경하여 사용자에게 클릭 가능함을 나타냄 */
+}
+
+/* 체크된 상태일 때의 동그란 모양에 대한 스타일 */
+.checkbox-custom:checked {
+  background-color: black; /* 체크된 상태일 때의 배경색 */
+}
+
+.payment_anotherSelect {
+  display: flex;
+  padding: 10px;
+  margin: 15px;
+  font-weight: 500;
+}
+
+.payment_card {
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.payment_method {
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-right: 10px;
+}
+
+.payment_methods {
+  display: flex;
+  padding-right: 10px; /* 부모 요소의 오른쪽 패딩 추가 */
+}
+
+.payment_method2 {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-right: 10px;
+}
+
+.payment_methods2 {
+  display: flex;
+  padding-right: 10px; /* 부모 요소의 오른쪽 패딩 추가 */
+}
+
+.payment_method img {
+  display: block;
+  margin: 10px;
+  width: 95px;
+  height: 40px;
+}
+
+.payment_method2 span {
+  display: block;
+  margin: 10px;
+  width: 95px;
+  height: 40px;
+}
+
+.payment_method.active {
+  border: 2px solid black;
+}
+
+.payment_method2.active {
+  border: 2px solid black;
+}
+
+.agreement_h1 {
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 아이템을 배치합니다. */
+  padding-top: 80px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  margin: 15px;
+  font-size: 25px;
+  font-weight: bolder;
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
+}
+
+.agreement_agree {
+  display: flex;
+  padding: 15px;
+  margin: 15px;
+  border-bottom: thin solid rgb(225, 225, 225);
+  font-size: 18px;
+}
+
+.agreement_info {
+  display: flex;
+  padding: 15px;
+  margin: 15px;
+  font-size: 18px;
+}
+
+.agreement_info2 {
+  display: flex;
+  padding: 15px;
+  margin: 15px;
+  font-size: 18px;
+}
+
+.agreement_pro {
+  display: flex;
+  padding: 15px;
+  margin: 15px;
+  font-size: 18px;
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
+}
+
+.agreement_agree__check {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px; /* 체크박스 너비 조정 */
+  height: 20px; /* 체크박스 높이 조정 */
+  border: 2px solid #ccc; /* 체크박스 테두리 스타일 */
+  border-radius: 4px; /* 체크박스 테두리 반경 설정 */
+  outline: none;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: 8px; /* 체크박스와 레이블 간격 조정 */
+}
+
+/* 체크박스 선택시의 스타일 */
+.agreement_agree__check:checked {
+  border-color: black; /* 체크됐을 때 테두리 색 */
+}
+
+/* 체크박스 체크 모양 */
+.agreement_agree__check:checked::before {
+  content: "\2713"; /* 체크 모양(유니코드) */
+  font-size: 16px; /* 체크 모양 크기 */
+  color: white; /* 체크 모양 색상 */
+  position: absolute; /* 절대적 위치 설정 */
+  top: 50%; /* 상단 위치 조정 */
+  left: 50%; /* 좌측 위치 조정 */
+  transform: translate(-50%, -50%); /* 중앙 정렬 */
+}
+
+.agreement_all {
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 아이템을 배치합니다. */
+  padding: 15px;
+  margin: 15px;
+  font-size: 18px;
+  font-weight: bolder;
 }
