@@ -371,6 +371,8 @@ label {
   justify-content: space-around;
   padding-left: 5px;
   padding-right: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .payment_method {
@@ -391,8 +393,8 @@ label {
 .payment_method2 {
   display: inline-block;
   cursor: pointer;
+  margin-left: 10px;
   padding: 10px;
-  margin-top: 20px;
   border-radius: 5px;
   border: 1px solid black;
   margin-right: 10px;
@@ -507,4 +509,27 @@ label {
   margin: 15px;
   font-size: 18px;
   font-weight: bolder;
+}
+
+/* 활성화된 버튼 스타일 */
+.totalPay {
+  display: block; /* inline 요소가 아닌 block 요소로 설정 */
+  margin: auto; /* 수평 가운데 정렬 */
+  position: relative; /* 다른 요소와의 상대적인 위치로 배치 */
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  width: 300px;
+  height: 80px;
+}
+
+/* 비활성화된 버튼 스타일 */
+.totalPay:disabled {
+  background-color: lightgray;
+  color: gray;
+  cursor: not-allowed;
 }

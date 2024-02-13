@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./ProductOrder.css";
 
 const ProductOrder = () => {
   const [name, setName] = useState(""); // 이름을 상태로 관리합니다.
@@ -18,10 +19,19 @@ const ProductOrder = () => {
   const [agreementPro, setAgreementPro] = useState(false);
 
   useEffect(() => {
-    // 모든 동의란이 선택되었는지 확인하는 함수
     const isAllAgreed = agreementInfo && agreementInfo2 && agreementPro;
-    setAgreementAll(isAllAgreed); // 전체 동의란 상태 업데이트
+    setAgreementAll(isAllAgreed);
   }, [agreementInfo, agreementInfo2, agreementPro]);
+
+  useEffect(() => {
+    // 모든 동의 상태가 변경될 때마다 결제 버튼 활성화 상태 업데이트
+    const totalPayButton = document.querySelector(".totalPay");
+    if (agreementAll) {
+      totalPayButton.disabled = false;
+    } else {
+      totalPayButton.disabled = true;
+    }
+  }, [agreementAll]);
 
   const handleNameChange = (event) => {
     setName(event.target.value); // 입력된 이름을 상태에 업데이트합니다.
@@ -100,6 +110,10 @@ const ProductOrder = () => {
     } else {
       setAgreementAll(false);
     }
+  };
+
+  const handlePaymentButtonClick = () => {
+    alert("결제가 완료되었습니다."); // 결제 버튼 클릭 시 알림창 표시
   };
 
   return (
@@ -408,7 +422,7 @@ const ProductOrder = () => {
           </div>
         </div>
         <div>
-          <button className={`totalPay ${agreementAll ? "active" : ""}`}>
+          <button className="totalPay" onClick={handlePaymentButtonClick}>
             결제하기
           </button>
         </div>
