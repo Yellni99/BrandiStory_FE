@@ -75,6 +75,7 @@ const ProductDetail = () => {
     if (color && newSize) {
       setViewOptions([...viewOptions, { color, size: newSize, quantity }]);
     }
+    setColor("");
     setSize("");
   };
 
