@@ -13,7 +13,7 @@ const ProductDetail = () => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [viewOptions, setViewOptions] = useState(false);
+  const [viewOptions, setViewOptions] = useState([]);
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
 
@@ -28,9 +28,9 @@ const ProductDetail = () => {
         const Data = await response.json();
         setMainImage(Data.mainImage);
         setDetailedImage(Data.detailedImage);
-        setCompanyName(Date.companyName);
-        setProductName(Date.productName);
-        setPrice(Date.price);
+        setCompanyName(Data.companyName);
+        setProductName(Data.productName);
+        setPrice(Data.price);
       } catch (error) {
         console.error("데이터를 불러오는 중 오류가 발생:", error);
       }
@@ -38,37 +38,43 @@ const ProductDetail = () => {
     fetchData();
   }, []);
 
-  const handleRemoveButton = () => {
-    setColor("");
-    setSize("");
-    setQuantity(1);
-    setViewOptions(false);
-    setSelectedColor("");
-    setSelectedSize("");
+  const handleRemoveButton = (indexToRemove) => {
+    setViewOptions(viewOptions.filter((_, index) => index !== indexToRemove));
   };
 
-  const handleIncrement = () => {
-    setQuantity((prevQantity) => prevQantity + 1);
+  const handleIncrement = (index) => {
+    const updatedViewOptions = [...viewOptions];
+    updatedViewOptions[index].quantity += 1;
+    setViewOptions(updatedViewOptions);
   };
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity((prevQantity) => prevQantity - 1);
+
+  const handleDecrement = (index) => {
+    const updatedViewOptions = [...viewOptions];
+    if (updatedViewOptions[index].quantity > 1) {
+      updatedViewOptions[index].quantity -= 1;
+      setViewOptions(updatedViewOptions);
     }
   };
 
   const handleColorChange = (e) => {
-    setColor(e.target.value);
+    const newColor = e.target.value;
+    setColor(newColor);
     setSize("");
-    setViewOptions(false);
-    setSelectedColor(e.target.value);
+    setSelectedColor(newColor);
     setSelectedSize("");
+    if (newColor && size) {
+      setViewOptions([...viewOptions, { color: newColor, size, quantity }]);
+    }
   };
 
   const handleSizeChange = (e) => {
-    setSize(e.target.value);
-    setViewOptions(true);
-    setSelectedSize(e.target.value);
-    setColor(" ");
+    const newSize = e.target.value;
+    setSize(newSize);
+    setSelectedSize(newSize);
+    setSelectedColor(color);
+    if (color && newSize) {
+      setViewOptions([...viewOptions, { color, size: newSize, quantity }]);
+    }
     setSize("");
   };
 
@@ -136,48 +142,63 @@ const ProductDetail = () => {
           </select>
         </div>
         <br />
-        {viewOptions && (
-          <div className="option-box">
-            <div className="options-1">
-              <div>
-                {selectedColor} / {selectedSize}
-                <div className="standard-delivery">일반배송</div>
+        <div>
+          {viewOptions.map((option, index) => (
+            <div className="option-box" key={index}>
+              <div className="options-1">
+                <div>
+                  {option.color} / {option.size}
+                  <div className="standard-delivery">일반배송</div>
+                </div>
+                <div className="quantity-option">
+                  <button
+                    onClick={() => handleDecrement(index)}
+                    style={{ border: "1px solid gray", background: "white" }}
+                  >
+                    -
+                  </button>
+                  <input
+                    className="quantity-Check"
+                    value={option.quantity}
+                    min={1}
+                    onChange={(e) => {
+                      const updatedViewOptions = [...viewOptions];
+                      updatedViewOptions[index].quantity = parseInt(
+                        e.target.value
+                      );
+                      setViewOptions(updatedViewOptions);
+                    }}
+                  />
+                  <button
+                    onClick={() => handleIncrement(index)}
+                    style={{ border: "1px solid gray", background: "white" }}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
-              <div className="quantity-option">
+              <div className="options-2">
+                <div className="total">{price * option.quantity}원</div>
                 <button
-                  onClick={handleDecrement}
-                  style={{ border: "1px solid gray", background: "white" }}
+                  className="remove-button"
+                  onClick={() => handleRemoveButton(index)}
                 >
-                  -
-                </button>
-                <input
-                  className="quantity-Check"
-                  value={quantity}
-                  min={1}
-                  onChange={(e) => setQuantity(e.target.value)}
-                />
-                <button
-                  onClick={handleIncrement}
-                  style={{ border: "1px solid gray", background: "white" }}
-                >
-                  +
+                  X
                 </button>
               </div>
             </div>
-            <div className="options-2">
-              <div className="total">{price}원</div>
-              <button className="remove-button" onClick={handleRemoveButton}>
-                X
-              </button>
-            </div>
-          </div>
-        )}
+          ))}
+        </div>
 
         <div className="total-price">
           <span>총 상품 금액</span>
           <span>
             {"     "}
-            {price}원
+            {viewOptions.reduce(
+              (total, option) => total + price * option.quantity,
+              0
+            )}
+            원
           </span>
         </div>
         <button className="buyNow">바로 구매</button>
