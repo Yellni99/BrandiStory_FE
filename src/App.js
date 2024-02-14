@@ -9,8 +9,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {" "}
-        {/* 이 부분이 추가되어야 함 */}
         <Route path="/order" element={<ProductOrder />} />
         <Route path="/basket" element={<ShoppingBasket />} />
       </Routes>

@@ -1,23 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // useNavigate 훅을 import 합니다.
 import "./ShoppingBasket.css"; // CSS 파일을 가져옵니다.
 
-const ShoppingBasket = () => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [dcheckbox, setdcheckbox] = useState(false);
-  const [info, setinfo] = useState(false);
-  const [detail, setdetail] = useState(false);
+const Price = 30780;
+const discount = 0;
 
+const ShoppingBasket = () => {
+  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수를 가져옵니다.
+  const [isChecked, setIsChecked] = useState(false);
+  const [dcheckbox, setDCheckbox] = useState(false);
+  const [info, setInfo] = useState(false);
+  const [detail, setDetail] = useState(false);
+  const [totalpayActive, setTotalpayActive] = useState(false); // 총 결제금액 버튼 활성화 상태
+
+  const [quantity, setQuantity] = useState(1); // 상품의 수량체크 하기 위해서 넣을 거에요
+  const totalPrice = Price - discount;
+
+  const incrementQuantity = () => {
+    setQuantity((qty) => qty + 1);
+  };
+
+  const decrementQuantity = () => {
+    setQuantity((qty) => (qty > 1 ? qty - 1 : 1));
+  };
+
+  useEffect(() => {
+    // 모든 체크박스가 체크되었는지 여부를 확인하여 총 결제금액 버튼 활성화 상태를 설정
+    const allChecked = isChecked && dcheckbox && info && detail;
+    setTotalpayActive(allChecked);
+  }, [isChecked, dcheckbox, info, detail]);
+
+  // 전체 선택/해제 시 모든 체크박스의 상태 변경
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked); // 체크박스 상태를 반전시킵니다.
+    const newCheckedState = !isChecked;
+    setIsChecked(newCheckedState);
+    setDCheckbox(newCheckedState);
+    setInfo(newCheckedState);
+    setDetail(newCheckedState);
   };
-  const handledcheckboxChange = () => {
-    setdcheckbox(!dcheckbox); // 체크박스 상태를 반전시킵니다.
+
+  // 각각의 체크박스 상태 변경
+  const handleDCheckboxChange = () => {
+    setDCheckbox(!dcheckbox);
   };
-  const handledinfoChange = () => {
-    setinfo(!info); // 체크박스 상태를 반전시킵니다.
+
+  const handleDetailCheckboxChange = () => {
+    setDetail(!detail);
   };
-  const handleddetailChange = () => {
-    setdetail(!detail); // 체크박스 상태를 반전시킵니다.
+
+  // "주문하기" 버튼 클릭 시 ProductOrder 페이지로 이동
+  const handleOrderClick = () => {
+    navigate("/order"); // useNavigate 훅을 사용하여 페이지 이동
+  };
+
+  // "구매하기" 버튼 클릭 시 ProductOrder 페이지로 이동
+  const handlePurchaseClick = () => {
+    navigate("/order"); // useNavigate 훅을 사용하여 페이지 이동
   };
 
   return (
@@ -33,18 +71,13 @@ const ShoppingBasket = () => {
           />
           전체선택(1/1)
         </label>
-        <button
-          className={`Basket_select ${isChecked ? "active" : "inactive"}`}
-        >
-          선택삭제
-        </button>
       </div>
       <div className="Basket_delivery">
         <input
           type="checkbox"
           className="Basket_dcheckbox"
-          checked={dcheckbox}
-          onChange={handledcheckboxChange}
+          checked={isChecked && dcheckbox} // Basket_checkbox의 상태에 따라 dcheckbox 상태 설정
+          onChange={handleDCheckboxChange}
         />
         일반배송
       </div>
@@ -52,8 +85,8 @@ const ShoppingBasket = () => {
         <input
           type="checkbox"
           className="Basket_info"
-          checked={info}
-          onChange={handledinfoChange}
+          checked={isChecked && info} // Basket_checkbox의 상태에 따라 info 상태 설정
+          onChange={() => setInfo(!info)}
         />
         <span className="info">상품정보</span>
         <span className="option">옵션</span>
@@ -65,7 +98,7 @@ const ShoppingBasket = () => {
             type="checkbox"
             className="Basket_detail"
             checked={detail}
-            onChange={handleddetailChange}
+            onChange={handleDetailCheckboxChange}
           />
           <img
             className="Basket_img"
@@ -79,19 +112,46 @@ const ShoppingBasket = () => {
         </div>
         <div className="option2">
           <div>연청/기본/s</div>
-          <div>30,780원</div>
+          <div className="item-quantity-controls">
+            <button onClick={decrementQuantity} className="decrementQuantity">
+              -
+            </button>
+            <span className="item-quantity-numb">{quantity}</span>
+            <button onClick={incrementQuantity} className="incrementQuantity">
+              +
+            </button>
+          </div>
+          <div className="item-price">
+            {`${(Price * quantity).toLocaleString()}원`}
+          </div>
         </div>
         <div className="price2">
-          <div>30,780원</div>
-          <button>주문하기</button>
+          <div>{`${(Price * quantity).toLocaleString()}원`}</div>
+          <button
+            className={`Basket_request active`}
+            onClick={handleOrderClick}
+          >
+            주문하기
+          </button>
         </div>
       </div>
       <div className="Basket_total">
         <div>총 결제금액</div>
-        <div clasName="Basket_total__price">30,780원</div>
+        <div className="total-price">
+          <span className="total">{`${(
+            totalPrice * quantity
+          ).toLocaleString()}원`}</span>
+        </div>
       </div>
       <div>
-        <button className="Basket_totalpay">구매하기</button>
+        <button
+          className={`Basket_totalpay ${
+            totalpayActive ? "active" : "inactive"
+          }`}
+          onClick={handlePurchaseClick}
+        >
+          구매하기
+        </button>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ProductOrder.css";
 
 const ProductOrder = () => {
@@ -111,9 +112,11 @@ const ProductOrder = () => {
       setAgreementAll(false);
     }
   };
+  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수를 가져옵니다.
 
   const handlePaymentButtonClick = () => {
     alert("결제가 완료되었습니다."); // 결제 버튼 클릭 시 알림창 표시
+    navigate("/");
   };
 
   return (
