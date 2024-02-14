@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+li {
+  list-style-type: none;
+}
+.info {
+  display: flex;
+  margin: 10px;
+}
+.info li {
+  padding-left: 20px;
+}
+.info a:hover {
+  text-decoration: underline;
+}
+
+.footer_icons {
+  display: flex;
+  margin-bottom: 50px;
+}
+.footer_icons li {
+  padding-left: 30px;
+}
+.footer_icons a:hover {
+  text-decoration: underline;
+}
+.newnex {
+  font-size: 17px;
+  margin-left: 10px;
+}
+
+.newnex_write {
+  font-size: 15px;
+  color: #4e4e4e;
+  margin: 20px;
+}
