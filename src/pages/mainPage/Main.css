@@ -1,4 +1,3 @@
-/* Main.css */
 li {
   list-style: none;
 }
@@ -6,42 +5,37 @@ li {
 #list {
   margin-top: 10px;
   display: flex;
-  flex-direction: column; /* 세로 방향으로 행을 나열합니다. */
-  align-items: center; /* 행을 수직으로 가운데 정렬합니다. */
-  height: 100%; /* 화면 전체 높이를 기준으로 설정 (선택사항) */
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 
-/* 주 이미지 목록에 대해 flex를 적용합니다. */
 #list .main_image1,
 #list .main_image2 {
   display: flex;
-  margin-bottom: 20px; /* 각 행 사이의 여백을 조정하세요. */
+  margin-bottom: 20px;
 }
 
-/* 각 리스트 항목에 스타일을 적용합니다. */
 #list .main_image1 li,
 #list .main_image2 li {
-  margin-right: 15px; /* 필요에 따라 이미지 간 여백을 조정하세요. */
+  margin-right: 15px;
 }
 
-/* 이미지 컨테이너에 대한 스타일 */
 #list .main_image1 li a,
 #list .main_image2 li a {
   display: block;
-  width: 300px; /* 이미지 컨테이너의 고정된 너비 */
-  overflow: hidden; /* 너비를 초과하는 부분을 감출 수 있도록 설정 */
-  transition: transform 0.3s ease-in-out; /* 호버 효과를 부드럽게 만들기 위한 트랜지션 설정 */
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
 }
 
-/* 이미지가 반응형으로 표시되도록합니다. */
 #list .main_image1 img,
 #list .main_image2 img {
-  width: 100%; /* 이미지를 컨테이너에 꽉 차도록 설정 */
+  width: 100%;
   height: auto;
-  transition: transform 0.3s ease-in-out; /* 호버 효과를 부드럽게 만들기 위한 트랜지션 설정 */
+  transition: transform 0.3s ease-in-out;
 }
 
-/* 호버 시 이미지 확대 효과 */
 #list .main_image1 li:hover a,
 #list .main_image2 li:hover a {
 }
@@ -71,4 +65,33 @@ li {
   justify-content: center;
   font-weight: bold;
   font-size: 20px;
+}
+
+.haru-delivery {
+  margin-left: 43%;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: 1px solid #c7c7c7;
+}
+.haru-delivery:hover {
+  background-color: #d9d9d9;
+  transition: all 0.6s;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner li {
+  margin: 20px;
+}
+.banner img {
+  width: 100%;
+  height: 300px;
+}
+.banner img:hover {
+  border: 1px solid #c7c7c7;
+  overflow: hidden;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import { cart, logo, searching, fav, profile } from "../../assets/images";
 
@@ -38,9 +39,9 @@ function Header() {
     <div className="Header">
       <div className="logo">
         <h1 className="logoimage">
-          <a href="#" className="logo-link">
+          <Link to="/" className="logo-link">
             <img src={logo} alt="Logo" />
-          </a>
+          </Link>
         </h1>
       </div>
 

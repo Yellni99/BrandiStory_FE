@@ -8,6 +8,8 @@ import {
   image6,
   image7,
   image8,
+  banner1,
+  banner2,
 } from "../../assets/images";
 import "../mainPage/Main.css";
 import { SliderData } from "./SliderData";
@@ -90,6 +92,22 @@ function Main() {
             </li>
           </ul>
         </section>
+
+        <button class="haru-delivery">
+          <a href="#">하루배송 상품 더보기</a>
+        </button>
+        <ul className="banner">
+          <li>
+            <a href="#">
+              <img src={banner1} alt="banner1" />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src={banner2} alt="banner2" />
+            </a>
+          </li>
+        </ul>
       </div>
     </>
   );

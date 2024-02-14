@@ -25,3 +25,5 @@ export { default as slide11 } from "./slide11.jpg";
 export { default as slide12 } from "./slide12.jpg";
 export { default as slide13 } from "./slide13.jpg";
 export { default as slide14 } from "./slide14.jpg";
+export { default as banner1 } from "./banner1.png";
+export { default as banner2 } from "./banner2.png";
