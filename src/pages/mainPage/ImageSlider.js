@@ -1,4 +1,3 @@
-// ImageSlider.js
 import React, { useState, useEffect } from "react";
 import "./ImageSlider.css";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
@@ -15,16 +14,21 @@ const ImageSlider = ({ slides }) => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
+  useEffect(() => {
+    if (!Array.isArray(slides) || slides.length === 0) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setCurrent((prevCurrent) => (prevCurrent + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [slides]); // slides 배열이 변경될 때마다 useEffect가 호출되도록 의존성 배열을 설정
+
+  if (!Array.isArray(slides) || slides.length === 0) {
     return null;
   }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((current + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [current]);
 
   return (
     <section className="slider">
