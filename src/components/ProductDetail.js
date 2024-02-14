@@ -205,14 +205,11 @@ const ProductDetail = () => {
             원
           </span>
         </div>
-        <button className="buyNow" onClick={() => navigate("/ProductOrder")}>
+        <button className="buyNow" onClick={() => navigate("/order")}>
           바로 구매
         </button>
         <button className="naverPay">네이버페이 구매</button>
-        <button
-          className="addToCart"
-          onClick={() => navigate("/ShoppingBasket")}
-        >
+        <button className="addToCart" onClick={() => navigate("/basket")}>
           <Cart />
         </button>
         <button className="wish">
