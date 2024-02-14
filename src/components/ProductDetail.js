@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Cart } from "react-bootstrap-icons";
 import { Heart } from "react-bootstrap-icons";
 import "./ProductDetail.css";
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
+
   const [mainImage, setMainImage] = useState("");
   const [detailedImage, setDetailedImage] = useState([]);
   const [companyName, setCompanyName] = useState("");
@@ -202,9 +205,14 @@ const ProductDetail = () => {
             원
           </span>
         </div>
-        <button className="buyNow">바로 구매</button>
+        <button className="buyNow" onClick={() => navigate("/ProductOrder")}>
+          바로 구매
+        </button>
         <button className="naverPay">네이버페이 구매</button>
-        <button className="addToCart">
+        <button
+          className="addToCart"
+          onClick={() => navigate("/ShoppingBasket")}
+        >
           <Cart />
         </button>
         <button className="wish">
