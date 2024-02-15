@@ -137,11 +137,7 @@ const ShoppingBasket = () => {
       </div>
       <div className="Basket_total">
         <div>총 결제금액</div>
-        <div className="total-price">
-          <span className="total">{`${(
-            totalPrice * quantity
-          ).toLocaleString()}원`}</span>
-        </div>
+        <div>{`${(totalPrice * quantity).toLocaleString()}원`}</div>
       </div>
       <div>
         <button
