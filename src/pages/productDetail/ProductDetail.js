@@ -4,10 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Cart } from "react-bootstrap-icons";
 import { Heart } from "react-bootstrap-icons";
 import "./ProductDetail.css";
-import main from "../../assets/images/main.png";
-import detail1 from "../../assets/images/detail1.png";
-import detail2 from "../../assets/images/detail2.png";
-import detail3 from "../../assets/images/detail3.png";
 
 const ProductDetail = () => {
   const navigate = useNavigate();
@@ -104,28 +100,19 @@ const ProductDetail = () => {
     <div className="product-box">
       <div className="left-section">
         <div className="main-image">
-          {/* <img src={mainImage} alt="Main" /> */}
-          <img src={main} alt="메인이미지" />
+          <img src={mainImage} alt="Main" />
         </div>
         <div className="detailed-image">
-          {/* <div className="detailed-image1">
+          <div className="detailed-image1">
             <img src={detailedImage[0]} alt="Detail 1" />
-          </div> */}
-          <div className="detail-image1">
-            <img src={detail1} alt="상세이미지1" />
           </div>
 
-          {/* <div className="detailed-image2">
+          <div className="detailed-image2">
             <img src={detailedImage[1]} alt="Detail 2" />
-          </div> */}
-          <div className="detail-image1">
-            <img src={detail2} alt="상세이미지2" />
           </div>
-          {/* <div className="detailed-image3">
+
+          <div className="detailed-image3">
             <img src={detailedImage[2]} alt="Detail 3" />
-          </div> */}
-          <div className="detail-image1">
-            <img src={detail3} alt="상세이미지3" />
           </div>
         </div>
       </div>

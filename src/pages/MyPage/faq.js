@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./myPage.css";
-import MyPage from "./myPage";
+import "./Mypage.css";
+import Mypage from "./Mypage";
 
 const FaqItem = ({ question, answer, className }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +22,7 @@ const FaqItem = ({ question, answer, className }) => {
 function faq() {
   return (
     <>
-      <MyPage />
+      <Mypage />
       <div className="faq_every">
         <div>
           <h2>브랜디 자체 배송</h2>
