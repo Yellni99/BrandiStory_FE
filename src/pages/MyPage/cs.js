@@ -1,11 +1,11 @@
 import React from "react";
-import "./myPage.css";
-import MyPage from "./myPage";
+import "./Mypage.css";
+import Mypage from "./Mypage";
 
 function cs() {
   return (
     <>
-      <MyPage />
+      <Mypage />
       <div className="cs_all">
         <div className="cs_h1">고객센터</div>
         <div className="cs_contents">

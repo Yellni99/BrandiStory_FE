@@ -5,6 +5,7 @@ import ProductDetail from "./pages/productDetail/ProductDetail";
 import HeaderLayout from "./pages/HeaderLayout";
 import ProductOrder from "./pages/Order/ProductOrder";
 import ShoppingBasket from "./pages/Basket/ShoppingBasket";
+import Mypage from "./pages/MyPage/Mypage";
 
 const router = createBrowserRouter([
     {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
             { path: "basket", element: <ShoppingBasket /> },
             { path: "order", element: <ProductOrder /> },
             { path: "detail", element: <ProductDetail /> },
-            { path: "order", element: <ProductOrder /> },
+            { path: "mypage", element: <Mypage/>}
 
         ],
     },

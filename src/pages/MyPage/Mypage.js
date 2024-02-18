@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./myPage.css";
+import "./Mypage.css";
 
-const MyPage = () => {
+const Mypage = () => {
   const navigate = useNavigate();
 
   const goToMyPage = () => {
@@ -46,4 +46,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default Mypage;
