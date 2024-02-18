@@ -5,8 +5,15 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import ChartMenu from "./components/ChartMenu/ChartMenu";
 import ProductDetail from "./components/ProductDetail";
-import ProductOrder from "./components/ProductOrder"; // ProductOrder 컴포넌트를 가져옵니다.
-import ShoppingBasket from "./components/ShoppingBasket";
+import ProductOrder from "./components/Order/ProductOrder";
+import ShoppingBasket from "./components/Basket/ShoppingBasket";
+import MyPage from "./components/MyPage/myPage"; // 경로 수정
+import Cs from "./components/MyPage/cs";
+import Faq from "./components/MyPage/faq";
+
+
+
+
 
 const App = () => {
   return (
@@ -51,6 +58,39 @@ const App = () => {
               <Header />
               <ChartMenu />
               <ShoppingBasket />
+              <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/myPage"
+          element={
+            <div>
+              <Header />
+              <ChartMenu />
+              <MyPage />
+              <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <div>
+              <Header />
+              <ChartMenu />
+              <Faq />
+              <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/cs"
+          element={
+            <div>
+              <Header />
+              <ChartMenu />
+              <Cs />
               <Footer />
             </div>
           }
