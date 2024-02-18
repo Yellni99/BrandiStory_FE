@@ -2,7 +2,7 @@ import React from "react";
 import "./Mypage.css";
 import Mypage from "./Mypage";
 
-function cs() {
+function Cs() {
   return (
     <>
       <Mypage />
@@ -25,4 +25,4 @@ function cs() {
   );
 }
 
-export default cs;
+export default Cs;

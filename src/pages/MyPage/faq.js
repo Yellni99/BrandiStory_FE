@@ -19,7 +19,7 @@ const FaqItem = ({ question, answer, className }) => {
   );
 };
 
-function faq() {
+function Faq() {
   return (
     <>
       <Mypage />
@@ -222,4 +222,4 @@ function faq() {
   );
 }
 
-export default faq;
+export default Faq;
