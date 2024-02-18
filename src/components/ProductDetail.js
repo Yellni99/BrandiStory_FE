@@ -71,33 +71,51 @@ const ProductDetail = () => {
   };
 
   const handleSizeChange = (e) => {
+    //새로운 크기 값을 가져옴
     const newSize = e.target.value;
-    setSize(newSize);
-    setSelectedSize(newSize);
-    setSelectedColor(color);
-    if (color && newSize) {
-      setViewOptions([...viewOptions, { color, size: newSize, quantity }]);
+    //선택된 사이즈가 이전과 다른 경우에만 실행
+    if (newSize !== size) {
+      //선택된 사이즈 업데이트
+      setSize(newSize);
+      //선택한 사이즈 설정
+      setSelectedSize(newSize);
+      setColor("");
+      setSize("");
+      //viewOptions 배열에서 이미 선택된 색상과 새로운 사이즈를 가진 객체가 있는지 확인
+      const selectOption = viewOptions.findIndex(
+        (option) => option.color === color && option.size === newSize
+      );
+      // 이미 선택된 색상과 새로운 사이즈를 가진 객체가 있는 경우
+      if (selectOption !== -1) {
+        const updatedViewOptions = [...viewOptions];
+        updatedViewOptions[selectOption].quantity += 1;
+        setViewOptions(updatedViewOptions);
+      } else {
+        setViewOptions([...viewOptions, { color, size: newSize, quantity }]);
+      }
     }
-    setColor("");
-    setSize("");
   };
 
   return (
     <div className="product-box">
       <div className="left-section">
         <div className="main-image">
-          <img src={mainImage} alt="Main" />
+          {/* <img src={mainImage} alt="Main" /> */}
+          <div class="mainImage" alt="main" />
         </div>
         <div className="detailed-image">
-          <div className="detailed-image1">
+          {/* <div className="detailed-image1">
             <img src={detailedImage[0]} alt="Detail 1" />
-          </div>
-          <div className="detailed-image2">
+          </div> */}
+          <div class="detailed-Image1" alt="Detail 1" />
+          {/* <div className="detailed-image2">
             <img src={detailedImage[1]} alt="Detail 2" />
-          </div>
-          <div className="detailed-image3">
+          </div> */}
+          <div class="detailed-Image2" alt="Detail 2" />
+          {/* <div className="detailed-image3">
             <img src={detailedImage[2]} alt="Detail 3" />
-          </div>
+          </div> */}
+          <div class="detailed-Image3" alt="Detail 3" />
         </div>
       </div>
       <div className="right-section">
@@ -157,7 +175,12 @@ const ProductDetail = () => {
                 <div className="quantity-option">
                   <button
                     onClick={() => handleDecrement(index)}
-                    style={{ border: "1px solid gray", background: "white" }}
+                    style={{
+                      border: "1px solid gray",
+                      background: "white",
+                      width: "20px",
+                      height: "28px",
+                    }}
                   >
                     -
                   </button>
@@ -175,7 +198,12 @@ const ProductDetail = () => {
                   />
                   <button
                     onClick={() => handleIncrement(index)}
-                    style={{ border: "1px solid gray", background: "white" }}
+                    style={{
+                      border: "1px solid gray",
+                      background: "white",
+                      width: "20px",
+                      height: "28px",
+                    }}
                   >
                     +
                   </button>
