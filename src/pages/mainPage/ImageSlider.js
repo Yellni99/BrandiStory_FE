@@ -1,4 +1,3 @@
-// ImageSlider.js
 import React, { useState, useEffect } from "react";
 import "./ImageSlider.css";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
@@ -16,16 +15,18 @@ const ImageSlider = ({ slides }) => {
   };
 
   useEffect(() => {
-    if (!Array.isArray(slides) || slides.length <= 0) {
+
+    if (!Array.isArray(slides) || slides.length === 0) {
       return;
     }
 
     const interval = setInterval(() => {
-      setCurrent((current + 1) % slides.length);
+      setCurrent((prevCurrent) => (prevCurrent + 1) % slides.length);
     }, 5000);
 
     return () => clearInterval(interval);
   }, [current, slides]);
+
 
   return (
     <section className="slider">
