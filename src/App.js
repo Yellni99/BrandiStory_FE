@@ -4,18 +4,16 @@ import Main from "./pages/mainPage/Main";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import ChartMenu from "./components/ChartMenu/ChartMenu";
-import ProductDetail from "./components/ProductDetail";
+import ProductDetail from "./components/DetailPage/ProductDetail";
 import ProductOrder from "./components/Order/ProductOrder";
 import ShoppingBasket from "./components/Basket/ShoppingBasket";
 import MyPage from "./components/MyPage/myPage"; // 경로 수정
 import Cs from "./components/MyPage/cs";
 import Faq from "./components/MyPage/faq";
-
-
-
-
+import { Reset } from "styled-reset";
 
 const App = () => {
+  <Reset />;
   return (
     <Router>
       <Routes>

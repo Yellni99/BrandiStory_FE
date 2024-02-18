@@ -51,7 +51,7 @@ function Header() {
         </div>
 
         <div className="cart">
-          <a href="#" className="cart-link">
+          <a href="/basket" className="cart-link">
             <img src={cart} alt="Cart" />
           </a>
         </div>
@@ -61,7 +61,7 @@ function Header() {
           </a>
         </div>
         <div className="profile">
-          <a href="#" className="profile-link">
+          <a href="/mypage" className="profile-link">
             <img src={profile} alt="Profile" />
           </a>
         </div>

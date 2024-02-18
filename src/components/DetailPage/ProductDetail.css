@@ -19,12 +19,6 @@
   margin: 40px 40px 0px 40px;
 } */
 
-.mainImage {
-  background-image: url("../assets/images/main.png");
-  width: 450px;
-  height: 450px;
-}
-
 .detailed-image {
   /* 가로정렬 */
   display: flex;
@@ -52,27 +46,11 @@
   margin: 10px 10px 0px 5px;
 } */
 
-.detailed-Image1 {
-  background-image: url("../assets/images/detail-1.png");
+.detail-image1 {
   margin: 15px 15px 0px 0px;
   width: 100px;
   height: 100px;
 }
-
-.detailed-Image2 {
-  background-image: url("../assets/images/detail-2.png");
-  margin: 15px 15px 0px 0px;
-  width: 100px;
-  height: 100px;
-}
-
-.detailed-Image3 {
-  background-image: url("../assets/images/detail-3.png");
-  margin: 15px 15px 0px 0px;
-  width: 100px;
-  height: 100px;
-}
-
 .right-section {
   width: 50%;
   padding: 20px;
