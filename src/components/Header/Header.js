@@ -34,6 +34,7 @@ const SearchBar = ({ onSearch }) => {
     </form>
   );
 };
+
 function Header() {
   return (
     <div className="Header">
@@ -51,19 +52,19 @@ function Header() {
         </div>
 
         <div className="cart">
-          <a href="#" className="cart-link">
+          <Link to="/basket" className="cart-link">
             <img src={cart} alt="Cart" />
-          </a>
+          </Link>
         </div>
         <div className="fav">
-          <a href="#" className="fav-link">
+          <Link to="/" className="fav-link">
             <img src={fav} alt="Fav" />
-          </a>
+          </Link>
         </div>
         <div className="profile">
-          <a href="#" className="profile-link">
+          <Link to="/" className="profile-link">
             <img src={profile} alt="Profile" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
