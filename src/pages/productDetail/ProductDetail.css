@@ -20,7 +20,7 @@
 } */
 
 .mainImage {
-  background-image: url("../assets/images/main.png");
+  background-image: url("../../assets/images/main.png");
   width: 450px;
   height: 450px;
 }
@@ -53,21 +53,21 @@
 } */
 
 .detailed-Image1 {
-  background-image: url("../assets/images/detail-1.png");
+  background-image: url("../../assets/images/detail-1.png");
   margin: 15px 15px 0px 0px;
   width: 100px;
   height: 100px;
 }
 
 .detailed-Image2 {
-  background-image: url("../assets/images/detail-2.png");
+  background-image: url("../../assets/images/detail-2.png");
   margin: 15px 15px 0px 0px;
   width: 100px;
   height: 100px;
 }
 
 .detailed-Image3 {
-  background-image: url("../assets/images/detail-3.png");
+  background-image: url("../../assets/images/detail-3.png");
   margin: 15px 15px 0px 0px;
   width: 100px;
   height: 100px;
