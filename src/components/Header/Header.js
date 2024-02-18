@@ -34,6 +34,7 @@ const SearchBar = ({ onSearch }) => {
     </form>
   );
 };
+
 function Header() {
   return (
     <div className="Header">
@@ -56,9 +57,9 @@ function Header() {
           </a>
         </div>
         <div className="fav">
-          <a href="#" className="fav-link">
+          <Link to="/" className="fav-link">
             <img src={fav} alt="Fav" />
-          </a>
+          </Link>
         </div>
         <div className="profile">
           <a href="/mypage" className="profile-link">
