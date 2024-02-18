@@ -62,7 +62,7 @@ function Header() {
           </Link>
         </div>
         <div className="profile">
-          <Link to="/" className="profile-link">
+          <Link to="/mypage" className="profile-link">
             <img src={profile} alt="Profile" />
           </Link>
         </div>
