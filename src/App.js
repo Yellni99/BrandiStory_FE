@@ -6,6 +6,8 @@ import HeaderLayout from "./pages/HeaderLayout";
 import ProductOrder from "./pages/Order/ProductOrder";
 import ShoppingBasket from "./pages/Basket/ShoppingBasket";
 import Mypage from "./pages/MyPage/Mypage";
+import Cs from "./pages/MyPage/cs";
+import Faq from "./pages/MyPage/faq";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,8 @@ const router = createBrowserRouter([
       { path: "order", element: <ProductOrder /> },
       { path: "detail", element: <ProductDetail /> },
       { path: "mypage", element: <Mypage /> },
+      { path: "cs", element: <Cs /> },
+      { path: "faq", element: <Faq /> },
     ],
   },
 ]);
