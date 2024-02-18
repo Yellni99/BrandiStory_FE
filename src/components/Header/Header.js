@@ -52,9 +52,9 @@ function Header() {
         </div>
 
         <div className="cart">
-          <a href="/basket" className="cart-link">
+          <Link to="/basket" className="cart-link">
             <img src={cart} alt="Cart" />
-          </a>
+          </Link>
         </div>
         <div className="fav">
           <Link to="/" className="fav-link">
@@ -62,9 +62,9 @@ function Header() {
           </Link>
         </div>
         <div className="profile">
-          <a href="/mypage" className="profile-link">
+          <Link to="/mypage" className="profile-link">
             <img src={profile} alt="Profile" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
