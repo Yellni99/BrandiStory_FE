@@ -100,20 +100,22 @@ const ProductDetail = () => {
     <div className="product-box">
       <div className="left-section">
         <div className="main-image">
-          <img src={mainImage} alt="Main" />
+          {/* <img src={mainImage} alt="Main" /> */}
+          <div class="mainImage" alt="main" />
         </div>
         <div className="detailed-image">
-          <div className="detailed-image1">
+          {/* <div className="detailed-image1">
             <img src={detailedImage[0]} alt="Detail 1" />
-          </div>
-
-          <div className="detailed-image2">
+          </div> */}
+          <div class="detailed-Image1" alt="Detail 1" />
+          {/* <div className="detailed-image2">
             <img src={detailedImage[1]} alt="Detail 2" />
-          </div>
-
-          <div className="detailed-image3">
+          </div> */}
+          <div class="detailed-Image2" alt="Detail 2" />
+          {/* <div className="detailed-image3">
             <img src={detailedImage[2]} alt="Detail 3" />
-          </div>
+          </div> */}
+          <div class="detailed-Image3" alt="Detail 3" />
         </div>
       </div>
       <div className="right-section">
