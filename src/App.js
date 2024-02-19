@@ -8,6 +8,8 @@ import ShoppingBasket from "./pages/Basket/ShoppingBasket";
 import Mypage from "./pages/MyPage/Mypage";
 import Cs from "./pages/MyPage/cs";
 import Faq from "./pages/MyPage/faq";
+import LoginPage from "./components/Login/LoginPage";
+import LoginAddPage from "./components/Login/LoginAddPage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,8 @@ const router = createBrowserRouter([
       { path: "faq", element: <Faq /> },
     ],
   },
+  { path: "login", element: <LoginPage/>},
+  { path: "loginAdd", element: <LoginAddPage/>},
 ]);
 
 function App() {
