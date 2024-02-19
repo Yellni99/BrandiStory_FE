@@ -27,3 +27,10 @@ export { default as slide13 } from "./slide13.jpg";
 export { default as slide14 } from "./slide14.jpg";
 export { default as banner1 } from "./banner1.png";
 export { default as banner2 } from "./banner2.png";
+
+export { default as kakao } from "./kakao.svg";
+export { default as facebook } from "./facebook.svg";
+export { default as google } from "./google.svg";
+export { default as apple } from "./apple.svg";
+export { default as naver } from "./naver.svg";
+export { default as leftArrowIcon } from "./left_arrow_icon.svg";
