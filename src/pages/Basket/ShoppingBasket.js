@@ -20,7 +20,9 @@ const ShoppingBasket = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/v1/api/carts");
+        const response = await axios.get(
+          "http://ec2-3-35-217-174.ap-northeast-2.compute.amazonaws.com:8080/v1/api/carts"
+        );
         const { CartItems, productName, price, option } = response.data;
         setCartItems(CartItems);
         setProductName(productName);
@@ -113,49 +115,58 @@ const ShoppingBasket = () => {
         <span className="option">옵션</span>
         <span className="price">상품금액</span>
       </div>
-      {cartItems.map((item, index) => (
-        <div className="Basket_infomation" key={item.cart_items_id}>
-          <div className="info1">
-            <input
-              type="checkbox"
-              className="Basket_detail"
-              checked={item.detail}
-              onChange={() => handleDetailCheckboxChange(index)}
-            />
-            <span className="Basket_img">{item.cart_items_id}</span>
-          </div>
-          <div className="info2">
-            <div>{productName}</div> {/* 상품명 */}
-            <div>{price.toLocaleString()}원</div> {/* 가격 */}
-          </div>
-          <div className="option2">
-            <div>{option}</div> {/* 옵션 */}
-            <div className="item-quantity-controls">
-              <button onClick={decrementQuantity} className="decrementQuantity">
-                -
-              </button>
-              <span className="item-quantity-numb">{quantity}</span>
-              <button onClick={incrementQuantity} className="incrementQuantity">
-                +
-              </button>
+
+      {cartItems &&
+        cartItems.length > 0 &&
+        cartItems.map((item, index) => (
+          <div className="Basket_infomation" key={item.cart_items_id}>
+            <div className="info1">
+              <input
+                type="checkbox"
+                className="Basket_detail"
+                checked={item.detail}
+                onChange={() => handleDetailCheckboxChange(index)}
+              />
+              <span className="Basket_img">{item.cart_items_id}</span>
             </div>
-            <div className="item-price">
-              {`${(price * quantity).toLocaleString()}원`}{" "}
+            <div className="info2">
+              <div>{item.productName}</div> {/* 상품명 */}
+              <div>{item.price.toLocaleString()}원</div> {/* 가격 */}
+            </div>
+            <div className="option2">
+              <div>{item.option}</div> {/* 옵션 */}
+              <div className="item-quantity-controls">
+                <button
+                  onClick={decrementQuantity}
+                  className="decrementQuantity"
+                >
+                  -
+                </button>
+                <span className="item-quantity-numb">{quantity}</span>
+                <button
+                  onClick={incrementQuantity}
+                  className="incrementQuantity"
+                >
+                  +
+                </button>
+              </div>
+              <div className="item-price">
+                {`${(price * quantity).toLocaleString()}원`}{" "}
+                {/* 상품 가격 * 수량 */}
+              </div>
+            </div>
+            <div className="price2">
+              <div>{`${(price * quantity).toLocaleString()}원`}</div>{" "}
               {/* 상품 가격 * 수량 */}
+              <button
+                className={`Basket_request active`}
+                onClick={handleOrderClick}
+              >
+                주문하기
+              </button>
             </div>
           </div>
-          <div className="price2">
-            <div>{`${(price * quantity).toLocaleString()}원`}</div>{" "}
-            {/* 상품 가격 * 수량 */}
-            <button
-              className={`Basket_request active`}
-              onClick={handleOrderClick}
-            >
-              주문하기
-            </button>
-          </div>
-        </div>
-      ))}
+        ))}
       <div className="Basket_total">
         <div>총 결제금액</div>
         <div>{`${(totalPrice * quantity).toLocaleString()}원`}</div>{" "}
