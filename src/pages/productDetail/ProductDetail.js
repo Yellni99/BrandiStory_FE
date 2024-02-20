@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Cart } from "react-bootstrap-icons";
 import { Heart } from "react-bootstrap-icons";
 import "./ProductDetail.css";
+import axios from "axios";
 
 const ProductDetail = () => {
   const navigate = useNavigate();
@@ -22,23 +23,24 @@ const ProductDetail = () => {
 
   // 이펙트를 사용하여 백엔드에서 금액 값 받아오기
   useEffect(() => {
-    const fetchData = async () => {
+    const productData = async () => {
       try {
-        const response = await fetch("API주소");
-        if (!response.ok) {
-          throw new Error("데이터를 불러오는데 문제 발생");
-        }
-        const Data = await response.json();
-        setMainImage(Data.mainImage);
-        setDetailedImage(Data.detailedImage);
-        setCompanyName(Data.companyName);
-        setProductName(Data.productName);
-        setPrice(Data.price);
+        const response = await axios.get(
+          "http://localhost:8080/v1/api/products-page"
+        );
+        const { mainImage, detailedImage, companyName, productName, price } =
+          response.data;
+        setMainImage(mainImage);
+        setDetailedImage(detailedImage);
+        setCompanyName(companyName);
+        setProductName(productName);
+        setPrice(price);
       } catch (error) {
-        console.error("데이터를 불러오는 중 오류가 발생:", error);
+        console.error("Error fetching product detail:", error);
       }
     };
-    fetchData();
+
+    productData();
   }, []);
 
   const handleRemoveButton = (indexToRemove) => {
