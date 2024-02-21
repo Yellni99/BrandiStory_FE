@@ -9,6 +9,7 @@ import axios from "axios";
 function ProductDetail() {
   const navigate = useNavigate();
   const { productId } = useParams();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [productDetails, setProductDetails] = useState({
     mainImage: "",
@@ -36,6 +37,13 @@ function ProductDetail() {
   const [viewOptions, setViewOptions] = useState([]);
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+
+  useEffect(() => {
+    const authToken = sessionStorage.getItem("authToken");
+    if (authToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -127,6 +135,14 @@ function ProductDetail() {
     }
   };
 
+  const handleBuyNow = () => {
+    if (isLoggedIn) {
+      navigate("/order");
+    } else {
+      navigate("/mypage");
+    }
+  };
+
   return (
     <div className="product-box">
       <div className="left-section">
@@ -162,7 +178,6 @@ function ProductDetail() {
         {/*  </div>*/}
       </div>
 
-      {/*</div>*/}
       <div className="right-section">
         <div className="company">{productDetails.companyName}</div>
         <div className="product">{productDetails.productName}</div>
@@ -281,7 +296,8 @@ function ProductDetail() {
             원
           </span>
         </div>
-        <button className="buyNow" onClick={() => navigate("/order")}>
+
+        <button className="buyNow" onClick={handleBuyNow}>
           바로 구매
         </button>
         <button className="naverPay">네이버페이 구매</button>
