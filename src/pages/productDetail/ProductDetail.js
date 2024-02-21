@@ -32,9 +32,11 @@ const ProductDetail = () => {
           response.data;
         setMainImage(mainImage);
         setDetailedImage(detailedImage);
+        setDetailedImage(detailedImage || []);
         setCompanyName(companyName);
         setProductName(productName);
         setPrice(price);
+        setPrice(price || 0);
       } catch (error) {
         console.error("Error fetching product detail:", error);
       }
@@ -195,6 +197,7 @@ const ProductDetail = () => {
                       );
                       setViewOptions(updatedViewOptions);
                     }}
+                    style={{ paddingLeft: "8px" }}
                   />
                   <button
                     onClick={() => handleIncrement(index)}
