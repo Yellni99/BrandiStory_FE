@@ -27,6 +27,7 @@ const ProductDetail = () => {
       try {
         const response = await axios.get(
           "http://localhost:8080/v1/api/products-page"
+          "http://ec2-3-35-217-174.ap-northeast-2.compute.amazonaws.com:8080/v1/api/products-page"
         );
         const { mainImage, detailedImage, companyName, productName, price } =
           response.data;
@@ -172,6 +173,7 @@ const ProductDetail = () => {
               <div className="options-1">
                 <div>
                   {option.color} / {option.size}
+                  {option && option.color} / {option && option.size}
                   <div className="standard-delivery">일반배송</div>
                 </div>
                 <div className="quantity-option">
