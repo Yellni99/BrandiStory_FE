@@ -17,9 +17,10 @@ const router = createBrowserRouter([
     element: <HeaderLayout />,
     children: [
       { index: true, element: <Main /> },
+
       { path: "basket", element: <ShoppingBasket /> },
       { path: "order", element: <ProductOrder /> },
-      { path: "detail", element: <ProductDetail /> },
+      { path: "detail/:productId", element: <ProductDetail /> },
       { path: "mypage", element: <Mypage /> },
       { path: "cs", element: <Cs /> },
       { path: "faq", element: <Faq /> },
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
   },
   { path: "login", element: <LoginPage/>},
   { path: "loginAdd", element: <LoginAddPage/>},
+
 ]);
 
 function App() {

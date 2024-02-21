@@ -1,18 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Cart } from "react-bootstrap-icons";
 import { Heart } from "react-bootstrap-icons";
 import "./ProductDetail.css";
 import axios from "axios";
 
-const ProductDetail = () => {
+function ProductDetail() {
   const navigate = useNavigate();
+  const { productId } = useParams();
+
+  const [productDetails, setProductDetails] = useState({
+    mainImage: "",
+    detailedImage: [],
+    companyName: "",
+    productName: "",
+    price: 0,
+    color: "",
+    size: "",
+    quantity: 1,
+    viewOptions: [],
+    selectedColor: "",
+    selectedSize: "",
+  });
 
   const [mainImage, setMainImage] = useState("");
   const [detailedImage, setDetailedImage] = useState([]);
   const [companyName, setCompanyName] = useState("");
   const [productName, setProductName] = useState("");
+
   const [price, setPrice] = useState(0);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
@@ -21,29 +37,45 @@ const ProductDetail = () => {
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
 
-  // 이펙트를 사용하여 백엔드에서 금액 값 받아오기
   useEffect(() => {
-    const productData = async () => {
+    const fetchProductDetails = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/v1/api/products-page"
+          `http://localhost:8080/v1/api/products/${productId}`
         );
-        const { mainImage, detailedImage, companyName, productName, price } =
-          response.data;
-        setMainImage(mainImage);
-        setDetailedImage(detailedImage);
-        setDetailedImage(detailedImage || []);
-        setCompanyName(companyName);
-        setProductName(productName);
-        setPrice(price);
-        setPrice(price || 0);
+        const productData = response.data;
+        const mainImg =
+          productData.image_list.length > 0
+            ? productData.image_list[0].image
+            : "";
+        const detailedImgs = productData.image_list.map((img) => img.image);
+
+        setMainImage(mainImg);
+        setDetailedImage(detailedImgs);
+        setCompanyName(productData.company_name);
+        setProductName(productData.product_name);
+        setPrice(productData.price);
       } catch (error) {
-        console.error("Error fetching product detail:", error);
+        console.error("product detail 안불러와졍:", error);
       }
     };
 
-    productData();
-  }, []);
+    if (productId) {
+      fetchProductDetails();
+    }
+  }, [productId]);
+
+  const getNextDayDate = () => {
+    const today = new Date();
+    const nextDay = new Date(today);
+    nextDay.setDate(nextDay.getDate() + 1);
+
+    return nextDay.toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
 
   const handleRemoveButton = (indexToRemove) => {
     setViewOptions(viewOptions.filter((_, index) => index !== indexToRemove));
@@ -75,17 +107,12 @@ const ProductDetail = () => {
   };
 
   const handleSizeChange = (e) => {
-    //새로운 크기 값을 가져옴
     const newSize = e.target.value;
-    //선택된 사이즈가 이전과 다른 경우에만 실행
     if (newSize !== size) {
-      //선택된 사이즈 업데이트
       setSize(newSize);
-      //선택한 사이즈 설정
       setSelectedSize(newSize);
       setColor("");
       setSize("");
-      //viewOptions 배열에서 이미 선택된 색상과 새로운 사이즈를 가진 객체가 있는지 확인
       const selectOption = viewOptions.findIndex(
         (option) => option.color === color && option.size === newSize
       );
@@ -104,26 +131,44 @@ const ProductDetail = () => {
     <div className="product-box">
       <div className="left-section">
         <div className="main-image">
-          <img src={mainImage} alt="Main" />
+          {detailedImage[0] && <img src={detailedImage[0]} alt="Main" />}
         </div>
         <div className="detailed-image">
-          <div className="detailed-image1">
-            <img src={detailedImage[0]} alt="Detail 1" />
-          </div>
-
-          <div className="detailed-image2">
-            <img src={detailedImage[1]} alt="Detail 2" />
-          </div>
-
-          <div className="detailed-image3">
-            <img src={detailedImage[2]} alt="Detail 3" />
-          </div>
+          {detailedImage[0] && (
+            <div className="detailed-image1">
+              <img src={detailedImage[0]} alt="Detail 1" />
+            </div>
+          )}
+          {detailedImage[1] && (
+            <div className="detailed-image2">
+              <img src={detailedImage[1]} alt="Detail 2" />
+            </div>
+          )}
+          {detailedImage[2] && (
+            <div className="detailed-image3">
+              <img src={detailedImage[2]} alt="Detail 3" />
+            </div>
+          )}
         </div>
+        {/*  <div className="main-image">*/}
+        {/*    <img src={mainImage} alt="Main" />*/}
+        {/*  </div>*/}
+        {/*  <div className="detailed-image">*/}
+        {/*    {detailedImage.map((image, index) => (*/}
+        {/*        <div key={index} className={`detailed-image${index + 1}`}>*/}
+        {/*          <img src={image} alt={`Detail ${index + 1}`} />*/}
+        {/*        </div>*/}
+        {/*    ))}*/}
+        {/*  </div>*/}
       </div>
+
+      {/*</div>*/}
       <div className="right-section">
-        <div className="company">{companyName}업체명</div>
-        <div className="product">{productName}상품명</div>
-        <div className="product-price">{price}원</div>
+        <div className="company">{productDetails.companyName}</div>
+        <div className="product">{productDetails.productName}</div>
+        <div className="product-price">
+          {productDetails.price.toLocaleString()}원
+        </div>
         <div className="detail">
           <div className="pay-post1">
             빠른페이》 <span style={{ color: "gray" }}>결제시</span>
@@ -137,7 +182,7 @@ const ProductDetail = () => {
         </div>
         <div className="delivery">
           <span className="delivery-1">배송정보</span>
-          <span className="delivery-2">내일(수) 도착 예정</span>
+          <span className="delivery-2">내일({getNextDayDate()}) 도착 예정</span>
           <span className="delivery-3">무료배송</span>
         </div>
 
@@ -171,7 +216,6 @@ const ProductDetail = () => {
             <div className="option-box" key={index}>
               <div className="options-1">
                 <div>
-                  {option.color} / {option.size}
                   {option && option.color} / {option && option.size}
                   <div className="standard-delivery">일반배송</div>
                 </div>
@@ -250,6 +294,6 @@ const ProductDetail = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ProductDetail;

@@ -24,74 +24,50 @@ li {
 #list .main_image1 li a,
 #list .main_image2 li a {
   display: block;
-  width: 300px;
+  width: 200px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
 }
 
-#list .main_image1 img,
-#list .main_image2 img {
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 1rem;
+  height: 30rem;
+}
+
+.grid-item a {
+  display: block;
+  width: 300px;
+  overflow: hidden;
+}
+
+.grid-item img {
   width: 100%;
-  height: auto;
+  height: 16rem;
   transition: transform 0.3s ease-in-out;
 }
 
-#list .main_image1 li:hover a,
-#list .main_image2 li:hover a {
-}
-
-#list .main_image1 li:hover img,
-#list .main_image2 li:hover img {
+.grid-item:hover img {
   transform: scale(1.1);
 }
 
-#list {
-  position: relative;
-  overflow: hidden;
-}
-
-.main_image {
+.product-info {
   display: flex;
-  transition: transform 0.3s ease-in-out;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5rem;
 }
 
-.main_image li {
-  margin-right: 15px;
-}
-
-.today {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.haru-delivery {
-  margin-left: 43%;
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 10px 20px;
-  border: 1px solid #c7c7c7;
-}
-.haru-delivery:hover {
-  background-color: #d9d9d9;
-  transition: all 0.6s;
-}
-
-.banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.banner li {
-  margin: 20px;
-}
-.banner img {
-  width: 100%;
-  height: 300px;
-}
-.banner img:hover {
-  border: 1px solid #c7c7c7;
-  overflow: hidden;
+.product-info .product-name,
+.product-info .product-price {
+  height: 3rem;
+  margin: 0;
 }
