@@ -27,7 +27,6 @@ const ProductDetail = () => {
       try {
         const response = await axios.get(
           "http://localhost:8080/v1/api/products-page"
-          "http://ec2-3-35-217-174.ap-northeast-2.compute.amazonaws.com:8080/v1/api/products-page"
         );
         const { mainImage, detailedImage, companyName, productName, price } =
           response.data;
