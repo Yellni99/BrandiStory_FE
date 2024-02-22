@@ -57,12 +57,18 @@ function ProductDetail() {
             ? productData.image_list[0].image
             : "";
         const detailedImgs = productData.image_list.map((img) => img.image);
-
+        // setMainImage(mainImg);
+        // setDetailedImage(detailedImgs);
+        // setCompanyName(productData.company_name);
+        // setProductName(productData.product_name);
+        // setPrice(productData.price);
         setMainImage(mainImg);
         setDetailedImage(detailedImgs);
-        setCompanyName(productData.company_name);
-        setProductName(productData.product_name);
-        setPrice(productData.price);
+        setProductDetails({
+          companyName: productData.company_name,
+          productName: productData.product_name,
+          price: productData.price,
+        });
       } catch (error) {
         console.error("product detail 안불러와졍:", error);
       }
@@ -141,6 +147,22 @@ function ProductDetail() {
     } else {
       navigate("/mypage");
     }
+  };
+
+  const handleAddToCart = () => {
+    const cartItem = {
+      productId,
+      color: selectedColor,
+      size: selectedSize,
+      quantity,
+      companyName: productDetails.companyName,
+      productName: productDetails.productName,
+      price: productDetails.price,
+    };
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    cartItems.push(cartItem);
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    navigate("/basket", { state: { cartItem } });
   };
 
   return (
@@ -273,7 +295,9 @@ function ProductDetail() {
                 </div>
               </div>
               <div className="options-2">
-                <div className="total">{price * option.quantity}원</div>
+                <div className="total">
+                  {productDetails.price * option.quantity}원
+                </div>
                 <button
                   className="remove-button"
                   onClick={() => handleRemoveButton(index)}
@@ -290,7 +314,7 @@ function ProductDetail() {
           <span>
             {"     "}
             {viewOptions.reduce(
-              (total, option) => total + price * option.quantity,
+              (total, option) => total + productDetails.price * option.quantity,
               0
             )}
             원
@@ -301,7 +325,7 @@ function ProductDetail() {
           바로 구매
         </button>
         <button className="naverPay">네이버페이 구매</button>
-        <button className="addToCart" onClick={() => navigate("/basket")}>
+        <button className="addToCart" onClick={handleAddToCart}>
           <Cart />
         </button>
         <button className="wish">
