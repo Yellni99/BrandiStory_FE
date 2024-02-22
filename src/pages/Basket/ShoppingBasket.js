@@ -21,7 +21,7 @@ const ShoppingBasket = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://ec2-3-35-217-174.ap-northeast-2.compute.amazonaws.com:8080/v1/api/carts"
+          "http://localhost:8080/v1/api/products/${productId}"
         );
         const { CartItems, productName, price, option } = response.data;
         setCartItems(CartItems);
