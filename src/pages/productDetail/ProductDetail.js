@@ -200,153 +200,34 @@ function ProductDetail() {
         {/*  </div>*/}
       </div>
 
-      <div className="right-section">
-        <div className="company">{productDetails.companyName}</div>
-        <div className="product">{productDetails.productName}</div>
-        <div className="product-price">
-          {productDetails.price.toLocaleString()}원
-        </div>
-        <div className="detail">
-          <div className="pay-post1">
-            빠른페이》 <span style={{ color: "gray" }}>결제시</span>
+      <div className="detailed-image">
+        {detailedImage[0] && (
+          <div className="detailed-image1">
+            <img src={detailedImage[0]} alt="Detail 1" />
           </div>
-          <div className="pay-post2">1%적립 (200원)</div>
-          <div className="pay-post3">
-            ★★★★★{" "}
-            <span style={{ textDecoration: "underline" }}>500개 리뷰보기</span>{" "}
-            | 520개 구매중
+        )}
+        {detailedImage[1] && (
+          <div className="detailed-image2">
+            <img src={detailedImage[1]} alt="Detail 2" />
           </div>
-        </div>
-        <div className="delivery">
-          <span className="delivery-1">배송정보</span>
-          <span className="delivery-2">내일({getNextDayDate()}) 도착 예정</span>
-          <span className="delivery-3">무료배송</span>
-        </div>
-
-        <div>
-          <select
-            className="colorSelect"
-            value={color}
-            onChange={handleColorChange}
-          >
-            <option value="">색상을 선택하세요.</option>
-            <option value="화이트">화이트</option>
-            <option value="그레이">그레이</option>
-            <option value="블랙">블랙</option>
-          </select>
-          <br />
-          <select
-            className="sizeSelect"
-            value={size}
-            onChange={handleSizeChange}
-            disabled={!color}
-          >
-            <option value="">사이즈를 선택하세요.</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-          </select>
-        </div>
-        <br />
-        <div>
-          {viewOptions.map((option, index) => (
-            <div className="option-box" key={index}>
-              <div className="options-1">
-                <div>
-                  {option && option.color} / {option && option.size}
-                  <div className="standard-delivery">일반배송</div>
-                </div>
-                <div className="quantity-option">
-                  <button
-                    onClick={() => handleDecrement(index)}
-                    style={{
-                      border: "1px solid gray",
-                      background: "white",
-                      width: "20px",
-                      height: "28px",
-                    }}
-                  >
-                    -
-                  </button>
-                  <input
-                    className="quantity-Check"
-                    value={option.quantity}
-                    min={1}
-                    onChange={(e) => {
-                      const updatedViewOptions = [...viewOptions];
-                      updatedViewOptions[index].quantity = parseInt(
-                        e.target.value
-                      );
-                      setViewOptions(updatedViewOptions);
-                    }}
-                    style={{ paddingLeft: "8px" }}
-                  />
-                  <button
-                    onClick={() => handleIncrement(index)}
-                    style={{
-                      border: "1px solid gray",
-                      background: "white",
-                      width: "20px",
-                      height: "28px",
-                    }}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-              <div className="options-2">
-                <div className="total">
-                  {productDetails.price * option.quantity}원
-                </div>
-                <button
-                  className="remove-button"
-                  onClick={() => handleRemoveButton(index)}
-                >
-                  X
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="total-price">
-          <span>총 상품 금액</span>
-          {"     "}
-          {viewOptions.reduce(
-            (total, option) => total + productDetails.price * option.quantity,
-            0
-          )}
-        </div>
-        <div className="detailed-image">
-          {detailedImage[0] && (
-            <div className="detailed-image1">
-              <img src={detailedImage[0]} alt="Detail 1" />
-            </div>
-          )}
-          {detailedImage[1] && (
-            <div className="detailed-image2">
-              <img src={detailedImage[1]} alt="Detail 2" />
-            </div>
-          )}
-          {detailedImage[2] && (
-            <div className="detailed-image3">
-              <img src={detailedImage[2]} alt="Detail 3" />
-            </div>
-          )}
-        </div>
-        {/*  <div className="main-image">*/}
-        {/*    <img src={mainImage} alt="Main" />*/}
-        {/*  </div>*/}
-        {/*  <div className="detailed-image">*/}
-        {/*    {detailedImage.map((image, index) => (*/}
-        {/*        <div key={index} className={`detailed-image${index + 1}`}>*/}
-        {/*          <img src={image} alt={`Detail ${index + 1}`} />*/}
-        {/*        </div>*/}
-        {/*    ))}*/}
-        {/*  </div>*/}
+        )}
+        {detailedImage[2] && (
+          <div className="detailed-image3">
+            <img src={detailedImage[2]} alt="Detail 3" />
+          </div>
+        )}
       </div>
+      {/*  <div className="main-image">*/}
+      {/*    <img src={mainImage} alt="Main" />*/}
+      {/*  </div>*/}
+      {/*  <div className="detailed-image">*/}
+      {/*    {detailedImage.map((image, index) => (*/}
+      {/*        <div key={index} className={`detailed-image${index + 1}`}>*/}
+      {/*          <img src={image} alt={`Detail ${index + 1}`} />*/}
+      {/*        </div>*/}
+      {/*    ))}*/}
+      {/*  </div>*/}
 
-      {/*</div>*/}
       <div className="right-section">
         <div className="company">{productDetails.companyName}</div>
         <div className="product">{productDetails.productName}</div>
@@ -476,17 +357,6 @@ function ProductDetail() {
           <Heart />
         </button>
       </div>
-
-      <button className="buyNow" onClick={handleBuyNow}>
-        바로 구매
-      </button>
-      <button className="naverPay">네이버페이 구매</button>
-      <button className="addToCart" onClick={handleAddToCart}>
-        <Cart />
-      </button>
-      <button className="wish">
-        <Heart />
-      </button>
     </div>
   );
 }
