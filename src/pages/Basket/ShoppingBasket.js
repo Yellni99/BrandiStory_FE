@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./ShoppingBasket.css";
+import { useAuth } from "../../AuthContext";
 
 const ShoppingBasket = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { cartItem } = location.state || {};
+  const { authToken } = useAuth();
 
   const [isChecked, setIsChecked] = useState(false);
   const [dcheckbox, setDCheckbox] = useState(false);
@@ -22,23 +22,37 @@ const ShoppingBasket = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://ec2-3-35-217-174.ap-northeast-2.compute.amazonaws.com:8080/v1/api/products/${cartItem.productId}`
-        );
-        const { CartItems, productName, price, option } = response.data;
-        setCartItems(CartItems);
-        setProductName(productName);
-        setPrice(price);
-        setOption(option);
+        const response = await axios.get("http://localhost:8080/carts", {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+        setCartItems(response.data);
+        calculateTotalPrice(response.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching cart data", error);
       }
     };
 
-    if (cartItem) {
-      fetchData();
+    fetchData();
+  }, [authToken, navigate]);
+
+  const calculateTotalPrice = async (items) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/carts/total-price",
+        items,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      setTotalPrice(parseInt(response.data.replace(/[^\d]/g, "")));
+    } catch (error) {
+      console.error("Error calculating total price", error);
     }
-  }, [cartItem]);
+  };
 
   useEffect(() => {
     const allChecked =
@@ -54,8 +68,8 @@ const ShoppingBasket = () => {
     setQuantity((qty) => (qty > 1 ? qty - 1 : 1));
   };
 
-  const handleCheckboxChange = () => {
-    const newCheckedState = !isChecked;
+  const handleCheckboxChange = (e) => {
+    const newCheckedState = e.target.checked;
     setIsChecked(newCheckedState);
     setDCheckbox(newCheckedState);
     setInfo(newCheckedState);
@@ -65,11 +79,10 @@ const ShoppingBasket = () => {
   };
 
   const handleDetailCheckboxChange = (index) => {
-    setCartItems(
-      cartItems.map((item, i) =>
-        i === index ? { ...item, detail: !item.detail } : item
-      )
+    const updatedItems = cartItems.map((item, i) =>
+      i === index ? { ...item, detail: !item.detail } : item
     );
+    setCartItems(updatedItems);
   };
 
   const handleOrderClick = () => {
@@ -77,7 +90,9 @@ const ShoppingBasket = () => {
   };
 
   const handlePurchaseClick = () => {
-    navigate("/order");
+    navigate("/order", {
+      state: { totalPrice, cartItems },
+    });
   };
 
   return (
@@ -129,11 +144,11 @@ const ShoppingBasket = () => {
               <span className="Basket_img">{item.cart_items_id}</span>
             </div>
             <div className="info2">
-              <div>{item.productName}</div> {/* 상품명 */}
-              <div>{item.price.toLocaleString()}원</div> {/* 가격 */}
+              <div>{item.productName}</div>
+              <div>{item.price.toLocaleString()}원</div>
             </div>
             <div className="option2">
-              <div>{item.option}</div> {/* 옵션 */}
+              <div>{item.option}</div>
               <div className="item-quantity-controls">
                 <button
                   onClick={decrementQuantity}
@@ -151,12 +166,10 @@ const ShoppingBasket = () => {
               </div>
               <div className="item-price">
                 {`${(price * quantity).toLocaleString()}원`}{" "}
-                {/* 상품 가격 * 수량 */}
               </div>
             </div>
             <div className="price2">
               <div>{`${(price * quantity).toLocaleString()}원`}</div>{" "}
-              {/* 상품 가격 * 수량 */}
               <button
                 className={`Basket_request active`}
                 onClick={handleOrderClick}
@@ -169,8 +182,8 @@ const ShoppingBasket = () => {
       <div className="Basket_total">
         <div>총 결제금액</div>
         <div>{`${(totalPrice * quantity).toLocaleString()}원`}</div>{" "}
-        {/* 총 가격 * 수량 */}
       </div>
+
       <div>
         <button
           className={`Basket_totalpay ${
