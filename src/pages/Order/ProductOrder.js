@@ -123,7 +123,7 @@ const ProductOrder = () => {
     <div>
       <h1 className="Order_header">주문하기 뀻</h1>
       <div className="Order_info">
-        <div className="Order_h1">주문상품 정보</div>
+        <div className="Order_h1">주문상품 정보 뀨ㅜㅅ</div>
         <div className="Order_date">
           <div>
             <img
