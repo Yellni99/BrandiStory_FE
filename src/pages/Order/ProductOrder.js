@@ -3,15 +3,19 @@ import { useNavigate } from "react-router-dom";
 import "./ProductOrder.css";
 
 const ProductOrder = () => {
-  const [name, setName] = useState(""); // 이름을 상태로 관리합니다.
+  const [name, setName] = useState("");
   const [name2, setName2] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [phoneNumber2, setPhoneNumber2] = useState("");
   const [email, setEmail] = useState("");
   const [email2, setEmail2] = useState("");
+  const [address, setAddress] = useState("");
+  const [orderTotalPrice, setOrderTotalPrice] = useState("");
+  const [orderQuantity, setOrderQuantity] = useState("");
+  const [userAddress, setUserAddress] = useState("");
   const [selectedMemo, setSelectedMemo] =
     useState("배송시 요청사항을 선택해주세요");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // 드롭다운 메뉴의 상태 추가
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [agreementAll, setAgreementAll] = useState(false);
@@ -25,14 +29,61 @@ const ProductOrder = () => {
   }, [agreementInfo, agreementInfo2, agreementPro]);
 
   useEffect(() => {
-    // 모든 동의 상태가 변경될 때마다 결제 버튼 활성화 상태 업데이트
-    const totalPayButton = document.querySelector(".totalPay");
-    if (agreementAll) {
-      totalPayButton.disabled = false;
-    } else {
-      totalPayButton.disabled = true;
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://ec2-3-35-217-174.ap-northeast-2.compute.amazonaws.com:8080/"
+        );
+        const data = await response.json();
+        setAddress(data.address);
+        setOrderTotalPrice(data.orderTotalPrice);
+        setOrderQuantity(data.orderQuantity);
+        setUserAddress(data.userAddress);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const postData = async (url = "", data = {}) => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const json = await response.json();
+      console.log("Response:", json);
+    } catch (error) {
+      console.error("Error:", error);
     }
-  }, [agreementAll]);
+  };
+
+  useEffect(() => {
+    const url =
+      "http://ec2-3-35-217-174.ap-northeast-2.compute.amazonaws.com:8080/";
+    postData(url, orderData);
+  }, []);
+
+  const orderData = {
+    ordersId: 1,
+    usersId: 13,
+    cartItemsId: 46,
+    customerName: name,
+    customerPhone: phoneNumber,
+    customerEmail: email,
+    deliveryAddress: address,
+    orderTotalPrice: orderTotalPrice,
+    orderQuantity: orderQuantity,
+    orderDate: new Date(),
+    useUserAddress: userAddress,
+  };
 
   const handleNameChange = (event) => {
     setName(event.target.value); // 입력된 이름을 상태에 업데이트합니다.

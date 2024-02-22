@@ -2,15 +2,16 @@
   display: flex;
   flex-direction: row;
   height: 100vh;
-  padding-top: 10rem;
+  padding-top: 7rem;
 }
 
 .left-section {
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  padding-left: 25rem;
 }
 
 .main-image img {
@@ -19,7 +20,9 @@
   object-fit: cover;
 }
 
-.detailed-image1 img, .detailed-image2 img, .detailed-image3 img {
+.detailed-image1 img,
+.detailed-image2 img,
+.detailed-image3 img {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -28,8 +31,25 @@
 .main-image {
   width: 400px;
   height: 400px;
-  border: 1px solid gray;
   margin-bottom: 10px;
+}
+
+.main-image img {
+  /* width: 100%;
+  height: auto; */
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.detailed-image1 img,
+.detailed-image2 img,
+.detailed-image3 img {
+  /* width: 100%;
+  height: auto; */
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
 }
 
 .detailed-image {
@@ -42,11 +62,11 @@
 .detailed-image > div {
   width: 80px;
   height: 80px;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 }
 .right-section {
   width: 50%;
-  padding: 20px;
+  padding-left: 60px;
 }
 
 .company {
