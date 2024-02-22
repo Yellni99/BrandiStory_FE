@@ -30,12 +30,6 @@ const ShoppingBasket = () => {
         setProductName(productName);
         setPrice(price);
         setOption(option);
-
-        const totalPriceFromApi = CartItems.reduce(
-          (total, item) => total + item.total_price,
-          0
-        );
-        setTotalPrice(totalPriceFromApi);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
