@@ -1,10 +1,13 @@
+// 이런식으로 장바구니 페이지 수정하면 이동은 함 //
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./ShoppingBasket.css";
 
 const ShoppingBasket = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { cartItem } = location.state || {};
 
   const [isChecked, setIsChecked] = useState(false);
   const [dcheckbox, setDCheckbox] = useState(false);
@@ -21,13 +24,14 @@ const ShoppingBasket = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/v1/api/products/${productId}"
+          `http://ec2-3-35-217-174.ap-northeast-2.compute.amazonaws.com:8080/v1/api/products/${cartItem.productId}`
         );
         const { CartItems, productName, price, option } = response.data;
         setCartItems(CartItems);
         setProductName(productName);
         setPrice(price);
         setOption(option);
+
         const totalPriceFromApi = CartItems.reduce(
           (total, item) => total + item.total_price,
           0
@@ -38,8 +42,10 @@ const ShoppingBasket = () => {
       }
     };
 
-    fetchData();
-  }, []);
+    if (cartItem) {
+      fetchData();
+    }
+  }, [cartItem]);
 
   useEffect(() => {
     const allChecked =
