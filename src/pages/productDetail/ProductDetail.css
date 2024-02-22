@@ -1,0 +1,222 @@
+.product-box {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  padding-top: 5rem;
+  justify-content: center;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.detailed-image1 img,
+.detailed-image2 img,
+.detailed-image3 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.main-image {
+  width: 400px;
+  height: 400px;
+  margin-bottom: 10px;
+}
+
+.main-image img {
+  /* width: 100%;
+  height: auto; */
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.detailed-image1 img,
+.detailed-image2 img,
+.detailed-image3 img {
+  /* width: 100%;
+  height: auto; */
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.detailed-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+.detailed-image > div {
+  width: 80px;
+  height: 80px;
+  /* border: 1px solid gray; */
+}
+.right-section {
+  padding-left: 7rem;
+}
+
+.company {
+  padding: 20px 7px 7px 7px;
+  font-size: 20px;
+}
+
+.product {
+  padding: 7px;
+  font-size: 30px;
+}
+
+.product-price {
+  padding: 7px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.pay-post1 {
+  padding: 15px 7px 5px 7px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.pay-post2 {
+  padding: 5px;
+  color: #3b84e0;
+  font-weight: bold;
+  background-color: #e7f5ff;
+  width: 105px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.pay-post3 {
+  padding: 15px 7px 7px 7px;
+}
+
+.delivery {
+  margin-top: 20px;
+}
+
+.colorSelect {
+  margin-top: 30px;
+  width: 400px;
+  height: 40px;
+}
+
+.sizeSelect {
+  margin-top: 10px;
+  width: 400px;
+  height: 40px;
+}
+
+.delivery-1 {
+  font-size: 15px;
+}
+
+.delivery-2 {
+  padding-left: 30px;
+  color: #3b84e0;
+  font-size: 15px;
+}
+
+.delivery-3 {
+  margin-left: 20px;
+  padding: 3px;
+  font-size: 15px;
+  border: none;
+  background-color: #ebeef2;
+  color: #9199a2;
+  border-radius: 5px;
+}
+
+.option-box {
+  width: 400px;
+  height: 110px;
+  position: relative;
+  margin-top: 10px;
+  padding: 15px;
+  background-color: #f5f6f6;
+  border-radius: 5px;
+}
+
+.standard-delivery {
+  font-size: 12px;
+  color: gray;
+}
+
+.quantity-option {
+  padding: 10px 0px 10px 0px;
+}
+
+.quantity-Check {
+  width: 30px;
+  height: 28px;
+}
+
+.remove-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: none;
+}
+
+.total {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.total-price {
+  padding: 20px 0px 20px 0px;
+}
+
+.buyNow {
+  width: 150px;
+  height: 40px;
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+}
+
+.naverPay {
+  margin-left: 10px;
+  width: 150px;
+  height: 40px;
+  color: white;
+  background-color: #00c73c;
+  border: none;
+  border-radius: 5px;
+}
+
+.addToCart {
+  margin-left: 10px;
+  font-size: 25px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.wish {
+  margin-left: 10px;
+  font-size: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+}

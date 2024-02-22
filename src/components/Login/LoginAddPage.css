@@ -1,0 +1,242 @@
+.add-account-content {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.greeting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.login-greeting {
+    color: #333;
+    text-align: start;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.login-description {
+    color: #666;
+    font-size: 14px;
+    text-align: start;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.input-id, .input-email, .input-password, .input-confirm-password, .input-phone, .input-address {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.id-id, .email, .pw, .pwcf, .phone, .address {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 16px;
+}
+
+.input-check {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    margin-top: 2rem;
+}
+
+.input-check input[type=checkbox] {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.checkbox-item:last-child {
+    margin-bottom: 0;
+}
+
+.custom-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    flex-shrink: 0; /* Prevent checkbox from shrinking */
+    position: relative;
+}
+
+/* Checked state for custom checkbox */
+.custom-checkbox:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.custom-checkbox:checked:after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 16px;
+}
+
+.checkbox-label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.input-check label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #888;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button.active {
+    background-color: black;
+}
+
+.button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.id .gender {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.id select {
+    width: 100%;
+    padding: 10px 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 16px;
+    color: #495057;
+    background-color: #fff;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.id select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.id select:disabled {
+    background-color: #e9ecef;
+}
+
+.id {
+    position: relative;
+}
+
+.id::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+
+.id select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+}
+
+.input-gender {
+    color: #333; /* 폰트 색상 조정 */
+    width: 100%;
+    padding: 10px 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-gender:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-gender:disabled {
+    background-color: #e9ecef;
+}
+
+
+@media (max-width: 768px) {
+    .add-account-modal-content {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
