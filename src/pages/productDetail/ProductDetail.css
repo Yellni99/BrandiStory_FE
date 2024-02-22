@@ -2,16 +2,14 @@
   display: flex;
   flex-direction: row;
   height: 100vh;
-  padding-top: 7rem;
+  padding-top: 5rem;
+  justify-content: center;
 }
 
 .left-section {
-  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  padding-left: 25rem;
 }
 
 .main-image img {
@@ -65,8 +63,7 @@
   /* border: 1px solid gray; */
 }
 .right-section {
-  width: 50%;
-  padding-left: 60px;
+  padding-left: 7rem;
 }
 
 .company {
