@@ -49,7 +49,7 @@ function ProductDetail() {
     const fetchProductDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/v1/api/products/${productId}`
+          `http://ec2-3-35-217-174.ap-northeast-2.compute.amazonaws.com:8080/v1/api/products/${productId}`
         );
         const productData = response.data;
         const mainImg =
