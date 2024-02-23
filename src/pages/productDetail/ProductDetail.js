@@ -200,34 +200,6 @@ function ProductDetail() {
         {/*  </div>*/}
       </div>
 
-      <div className="detailed-image">
-        {detailedImage[0] && (
-          <div className="detailed-image1">
-            <img src={detailedImage[0]} alt="Detail 1" />
-          </div>
-        )}
-        {detailedImage[1] && (
-          <div className="detailed-image2">
-            <img src={detailedImage[1]} alt="Detail 2" />
-          </div>
-        )}
-        {detailedImage[2] && (
-          <div className="detailed-image3">
-            <img src={detailedImage[2]} alt="Detail 3" />
-          </div>
-        )}
-      </div>
-      {/*  <div className="main-image">*/}
-      {/*    <img src={mainImage} alt="Main" />*/}
-      {/*  </div>*/}
-      {/*  <div className="detailed-image">*/}
-      {/*    {detailedImage.map((image, index) => (*/}
-      {/*        <div key={index} className={`detailed-image${index + 1}`}>*/}
-      {/*          <img src={image} alt={`Detail ${index + 1}`} />*/}
-      {/*        </div>*/}
-      {/*    ))}*/}
-      {/*  </div>*/}
-
       <div className="right-section">
         <div className="company">{productDetails.companyName}</div>
         <div className="product">{productDetails.productName}</div>
