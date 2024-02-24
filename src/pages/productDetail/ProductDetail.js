@@ -295,7 +295,9 @@ function ProductDetail() {
                 </div>
               </div>
               <div className="options-2">
-                <div className="total">{price * option.quantity}원</div>
+                <div className="total">
+                  {productDetails.price * option.quantity}원
+                </div>
                 <button
                   className="remove-button"
                   onClick={() => handleRemoveButton(index)}
@@ -312,7 +314,7 @@ function ProductDetail() {
           <span>
             {"     "}
             {viewOptions.reduce(
-              (total, option) => total + price * option.quantity,
+              (total, option) => total + productDetails.price * option.quantity,
               0
             )}
             원
