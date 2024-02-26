@@ -35,7 +35,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  <BrowserRouter basename="process.env.BrandiStory_FE">
+  <BrowserRouter basename={process.env.BrandiStory_FE}>
     return <RouterProvider router={router} />;
   </BrowserRouter>;
 }
