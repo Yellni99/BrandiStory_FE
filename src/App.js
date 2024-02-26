@@ -1,5 +1,9 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import Main from "./pages/mainPage/Main";
 import ProductDetail from "./pages/productDetail/ProductDetail";
 import HeaderLayout from "./pages/HeaderLayout";
@@ -31,7 +35,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  <BrowserRouter basename="process.env.BrandiStory_FE">
+    return <RouterProvider router={router} />;
+  </BrowserRouter>;
 }
 
 export default App;
