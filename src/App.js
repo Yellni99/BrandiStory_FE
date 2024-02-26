@@ -31,11 +31,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <RouterProvider router={router} />
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
